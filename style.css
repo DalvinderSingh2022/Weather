@@ -32,6 +32,9 @@ body article {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 3em;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
 }
 
 body aside {
@@ -94,5 +97,13 @@ aside .locationInfo {
 }
 
 .group .value {
-    font-size: 2.8em;
+    font-size: 2.2em;
+}
+
+.hourlydetail .container {
+    grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr));
+}
+
+.hourlydetail .group {
+    align-items: center;
 }

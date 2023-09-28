@@ -1,5 +1,6 @@
 const aside = document.querySelector("aside");
 const weatherDetail = document.querySelector(".weatherdetail .container");
+const hourlyDetail = document.querySelector(".hourlydetail .container");
 
 const API = {
     url: 'https://api.openweathermap.org/data/2.5/',
@@ -15,9 +16,8 @@ const API = {
 
 const currentWeather = async (place) => {
     try {
-        const response = await fetch(API.url + `weather?q=${place}&unit=metric&appid=` + API.key, API.header)
+        const response = await fetch(`${API.url}weather?q=${place}&unit=imperial&appid=${API.key}`, API.header)
         const result = await response.json();
-        console.log(result);
 
         aside.innerHTML = `
         <div class="locationInfo">
@@ -77,9 +77,38 @@ const currentWeather = async (place) => {
                 </div>`;
 
     } catch (e) {
-        console.log(e)
+        console.error(e)
     }
 }
 
 
+const hourlyData = async (place) => {
+    try {
+        const coordinates = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${place}&appid=${API.key}`);
+        const position = await coordinates.json();
+        const response = await fetch(`${API.url}forecast/?lat=${position[0].lat}&lon=${position[0].lon}&appid=${API.key}`)
+        const result = await response.json();
+        hourlyDetail.innerHTML = '';
+
+        result.list.forEach(element => {
+            if (new Date(element.dt_txt).getTime() > new Date().getTime() && new Date(element.dt_txt).getTime() < (new Date().getTime() + 10800000 * 6)) {
+                hourlyDetail.innerHTML += `
+                <div class="group">
+                    <div class='header'>
+                        <span class='title'>${new Date(element.dt_txt).toLocaleTimeString()}</span>
+                    </div>
+                    <img src="./icons/${element.weather[0].icon}.png" alt="${element.weather[0].description}">
+                    <div class='header'>
+                        <span class="title">${element.main.temp}</span>
+                    </div>
+                 </div>`;
+            }
+        });
+
+    } catch (e) {
+        console.error(e)
+    }
+}
+
 currentWeather("delhi");
+hourlyData('delhi')
