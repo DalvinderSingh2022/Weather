@@ -1,6 +1,7 @@
 const aside = document.querySelector("aside");
 const weatherDetail = document.querySelector(".weatherdetail .container");
 const hourlyDetail = document.querySelector(".hourlydetail .container");
+const upcomingDaysDetail = document.querySelector(".upcomingdaysdetail .container");
 
 const API = {
     url: 'https://api.openweathermap.org/data/2.5/',
@@ -89,8 +90,32 @@ const hourlyData = async (place) => {
         const response = await fetch(`${API.url}forecast/?lat=${position[0].lat}&lon=${position[0].lon}&appid=${API.key}`)
         const result = await response.json();
         hourlyDetail.innerHTML = '';
+        upcomingDaysDetail.innerHTML = '';
 
         result.list.forEach(element => {
+            if (!(new Date(element.dt_txt).getHours())) {
+                upcomingDaysDetail.innerHTML += `
+                <div class="group">
+                    <div class='header'>
+                        <span class='title'>${new Date(element.dt_txt).toDateString().slice(0, -5)}</span>
+                        <span>${element.weather[0].description}</span>
+                    </div>
+                    <div class="info">
+                       <img src="./icons/${element.weather[0].icon}.png" alt="${element.weather[0].description}">
+                       <div class="column">
+                            <div class="header">
+                                <div class='title' title="Min temperature">${element.main.temp_min}</div>
+                                <span class="icon material-symbols-outlined">thermometer_loss</span>
+                            </div>
+                            <div class="header">
+                                <div class='title' title="Max temperature">${element.main.temp_max}</div>
+                                <span class="icon material-symbols-outlined">thermometer_gain</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }
+
             if (new Date(element.dt_txt).getTime() > new Date().getTime() && new Date(element.dt_txt).getTime() < (new Date().getTime() + 10800000 * 6)) {
                 hourlyDetail.innerHTML += `
                 <div class="group">

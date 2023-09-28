@@ -24,6 +24,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 body article {
@@ -35,6 +36,7 @@ body article {
     display: flex;
     flex-direction: column;
     gap: 2em;
+    height: calc(100vh - 6em);
 }
 
 body aside {
@@ -106,4 +108,32 @@ aside .locationInfo {
 
 .hourlydetail .group {
     align-items: center;
+}
+
+.upcomingdaysdetail img {
+    width: 120px;
+}
+
+.upcomingdaysdetail .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.upcomingdaysdetail .column {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.upcomingdaysdetail .icon {
+    background-color: var(--background-light);
+    color: var(--text);
+    margin-left: .3em;
+}
+
+@media screen and (max-width:740px) {
+    body {
+        display: block;
+    }
 }
