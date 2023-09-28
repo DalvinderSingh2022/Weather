@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
 
 :root {
-    --backgorund: #0b121e;
-    --background-light: #202b3c;
-    --text: #dbe1e5;
-    --text-light: #9299a3;
+    --backgorund: #5c9ce5;
+    --background-light: #e4f1ff;
+    --white: #ffff;
+    --text: #1e1e1e;
+    --text-light: #dcdcdc;
 }
 
 * {
@@ -12,4 +13,86 @@
     margin: 0;
     box-sizing: content-box;
     font-family: 'Rubik', sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    background-color: var(--backgorund);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    min-height: 100vh;
+}
+
+body article {
+    background-color: var(--background-light);
+    border-radius: 64px 0 0 64px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 3em;
+    overflow: auto;
+}
+
+body aside {
+    color: var(--white);
+    padding: 1em;
+}
+
+aside .locationInfo {
+    font-size: 1.4em;
+}
+
+.weatherCard {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+.weatherCard .temp {
+    font-size: 3.2em;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 1em;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    padding: 1em;
+}
+
+.container .group {
+    background-color: var(--white);
+    gap: 0.5em;
+    border-radius: 24px;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.group .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.header .icon {
+    height: 32px;
+    width: 32px;
+    background-color: var(--backgorund);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.group .value {
+    font-size: 2.8em;
 }
