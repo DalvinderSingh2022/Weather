@@ -26,6 +26,7 @@ const currentWeather = async () => {
     try {
         const response = await fetch(API.url + `weather?q=${search}&unit=metric&appid=` + API.key, API.header)
         const result = await response.json();
+        console.log(result)
 
         currentDetail.innerHTML = `
         <div class="location">${result.name}</div>
@@ -148,6 +149,7 @@ const error = () => {
     const backBtn = document.createElement('button');
     backBtn.addEventListener("click", () => {
         search = 'delhi';
+        form.querySelector('input').value = '';
         loading();
         currentWeather();
     });
@@ -177,8 +179,8 @@ geoLocation.addEventListener("click", () => {
         const lon = position.coords.longitude;
 
         const response = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=` + API.key);
-        const place = await response.json();
-        search = place[0].name;
+        const result = await response.json();
+        search = result[0].name;
         loading();
         currentWeather();
     }, () => alert('location access denied'));
