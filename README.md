@@ -19,6 +19,5 @@ You can view a live demo of the app [Weather](https://weatherds.netlify.app/) or
 
 ![image](https://github.com/DalvinderSingh2022/Weather/assets/110463060/d4736222-86de-4786-88e1-01be3d1f6eba)
 
-![image](https://github.com/DalvinderSingh2022/Weather/assets/110463060/10b5ae80-09c0-4684-96cb-a2dd8a938efb)
-
-![image](https://github.com/DalvinderSingh2022/Weather/assets/110463060/ba73732f-38c6-49c9-872b-3e82a643486c)
+![image](https://github.com/DalvinderSingh2022/Weather/assets/110463060/169c94cf-2c09-4f11-85f2-f0128d79fd54)
+![image](https://github.com/DalvinderSingh2022/Weather/assets/110463060/d767a0e3-c4fd-427f-a5f9-7e77cbc72c37)
