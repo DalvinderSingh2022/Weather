@@ -14,18 +14,30 @@
 </head>
 
 <body>
-    <aside></aside>
+    <aside>
+        <section>
+            <form class="search">
+                <input type="text" placeholder="eg. delhi">
+            </form>
+            <div class="header">
+                <button class="geolocation">use location<span
+                        class="material-symbols-outlined">location_on</span></button>
+                <div class="convertor">°C<input type="checkbox">°F</div>
+            </div>
+        </section>
+        <div class="currentdetail"></div>
+    </aside>
     <article>
         <div class="weatherdetail">
-            <h4>More details of Today Weather</h4>
+            <h3>More details of Today Weather</h3>
             <div class="container"></div>
         </div>
         <div class="hourlydetail">
-            <h4>Upcoming Hours</h4>
+            <h3>Upcoming Hours</h3>
             <div class="container"></div>
         </div>
         <div class="upcomingdaysdetail">
-            <h4>Upcoming days</h4>
+            <h3>Upcoming days</h3>
             <div class="container"></div>
         </div>
     </article>
