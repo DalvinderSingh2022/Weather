@@ -96,7 +96,7 @@ const hourlyData = async () => {
         upcomingDaysDetail.innerHTML = '';
 
         result.list.forEach(element => {
-            if (!(new Date(element.dt_txt).getHours())) {
+            if ((new Date(element.dt_txt).getHours()) == 12) {
                 upcomingDaysDetail.innerHTML += `
                 <div class="group">
                     <div class='header'>
