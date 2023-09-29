@@ -17,7 +17,7 @@
 
 img {
     width: min(100%, 220px);
-    margin: auto;
+    margin: 0 auto;
 }
 
 body {
@@ -47,19 +47,20 @@ body article::-webkit-scrollbar {
 body aside {
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    color: var(--white);
     padding: 1em;
     font-size: 1.1em;
+    min-width: 340px;
 }
 
 aside section {
     background-color: var(--white);
     border-radius: 24px;
     color: var(--text);
+    z-index: 9;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-section input {
+section input[type='text'] {
     outline: none;
     padding: .8em 1em;
     font-size: 1.1em;
@@ -95,39 +96,39 @@ section .convertor {
 
 input[type='checkbox'] {
     position: relative;
-    height: 100%;
-    width: 20px;
-    margin: 0 .5em;
+    height: 30px;
+    width: 60px;
+    margin: 0 0.5em;
     appearance: none;
-    background: var(--white);
-    outline: none;
+    background: var(--background-light);
     border-radius: 25px;
-}
-
-input[type='checkbox']:checked::before {
-    background: var(--backgorund);
 }
 
 input[type='checkbox']:before {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 2px;
-    height: calc(100% - 4px);
+    top: 4px;
+    left: 4px;
+    bottom: 4px;
     aspect-ratio: 1;
-    border-radius: 30px;
-    background-color: var(--background-light);
-    transition-duration: .2s;
+    transition: .5s ease;
+    border-radius: inherit;
+    background-color: var(--white);
 }
 
-input[type='checkbox']:checked:before {
-    left: calc(100% - 29px);
+input[type='checkbox']:checked::before {
+    background: var(--backgorund);
+    left: calc(100% - 26px);
 }
 
 aside .currentdetail {
-    margin: 0 3em;
+    margin: -1em 1em 0;
     display: flex;
     flex-direction: column;
+    background-color: var(--background-light);
+    padding: 2em;
+    border-radius: 0 0 42px 42px;
+    height: 100%;
 }
 
 .currentdetail .location {
@@ -161,6 +162,7 @@ span.unit {
     display: flex;
     flex-direction: column;
     padding: 1em;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 }
 
 .header {
@@ -234,9 +236,6 @@ span.unit {
 }
 
 .back {
-    background-color: var(--background-light);
-    text-align: center;
-    color: var(--text);
     align-self: center;
 }
 
@@ -256,11 +255,16 @@ span.unit {
         border-radius: 42px 42px 0 0;
         padding: 2em 1em;
         height: auto;
+        z-index: 9;
     }
 
-    body article,
     body aside {
         position: sticky;
         top: 0;
+        padding: 0 0 2em;
+    }
+
+    aside section {
+        border-radius: 0 0 24px 24px;
     }
 }
