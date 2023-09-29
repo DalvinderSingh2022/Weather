@@ -172,17 +172,16 @@ convertor.addEventListener('change', (e) => {
 });
 
 geoLocation.addEventListener("click", () => {
-    const successCallback = async (position) => {
+    navigator.geolocation.getCurrentPosition(async (position) => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=` + API.key);
+        const response = await fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=` + API.key);
         const place = await response.json();
         search = place[0].name;
         loading();
         currentWeather();
-    };
-    navigator.geolocation.getCurrentPosition(successCallback);
+    }, () => alert('location access denied'));
 })
 
 loading();
